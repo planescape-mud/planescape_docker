@@ -29,6 +29,5 @@ COPY planescape_world ${HOME}/runtime/share
 EXPOSE 4000
 
 # Launch MUD on container startup.
-COPY autorun ${HOME}/runtime/bin
-CMD cd /home/planescape/runtime && ./bin/autorun
+CMD cd /home/planescape/runtime && ./bin/planescape etc/planescape.xml
 
