@@ -22,8 +22,13 @@ cd ${HOME}/objs && \
 ../planescape_code/configure --prefix=${HOME}/runtime && \
 make -j 8 && make install
 
-# Install locally downloaded configuration files and areas.
-COPY planescape_world ${HOME}/runtime/share
+# Download and install configuration files.
+# Set up 'share/world' to point to the local mini-set of areas.
+RUN cd ${HOME} && \
+git clone https://github.com/planescape-mud/planescape_world.git && \
+ln -s ${HOME}/planescape_world ${HOME}/runtime/share && \
+ln -s ${HOME}/runtime/share/world.mini ${HOME}/runtime/share/world
+
 
 # Expose all MUD ports that listen to external connections.
 EXPOSE 4000

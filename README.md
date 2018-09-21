@@ -12,16 +12,11 @@ git clone https://github.com/planescape-mud/planescape_docker.git
 cd local
 ```
 
-* Download Planescape zones and configs to the 'local' folder. For example, use:
-```bash
-git clone https://YOURLOGIN@bitbucket.org/psmud/planescape_world.git
-```
-
-* From the same folder, build and launch the container, exposing port 4000 to the host. 
+* Build and launch the container, exposing port 4000 to the host. 
   Logs are in /home/planescape/runtime/var/log.
 ```bash
 docker build -t planescape/local .
-docker run --name planescape -P -it planescape/local
+docker run --name planescape -p 4000:4000 -it planescape/local
 ```
 
 * Connect to the game:
